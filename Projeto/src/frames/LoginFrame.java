@@ -109,7 +109,9 @@ public class LoginFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
+                MainFrame telaPrincipal= new MainFrame();
+                this.dispose();;
+                telaPrincipal.setVisible(true);
     }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
