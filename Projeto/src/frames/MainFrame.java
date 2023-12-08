@@ -17,6 +17,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        
     }
 
     /**
@@ -27,9 +28,7 @@ public class MainFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-    	painelVenda= new VendaFrame();
-    	getContentPane().add(painelVenda);
-    	painelVenda.setVisible(true);
+
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
@@ -54,19 +53,13 @@ public class MainFrame extends javax.swing.JFrame {
                 VendaButtonActionPerformed(evt);
             }
         });
-        
-        SairButton.addActionListener(new java.awt.event.ActionListener() {
-        	public void actionPerformed(java.awt.event.ActionEvent evt) {
-        		SairButtonActionPerformed(evt);
-        	}
-        });
 
         NovoUserButton.setText("Novo Usuário");
         NovoUserButton.setEnabled(false);
 
         CadastroLabel.setText("Cadastrar:");
 
-        SignLabel.setText("@R&C Tech. 2023");
+        SignLabel.setText("@Redlines Tech. 2023");
 
         SairButton.setText("Sair");
 
@@ -154,9 +147,9 @@ public class MainFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void VendaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VendaButtonActionPerformed
+    private void VendaButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
 
-    }//GEN-LAST:event_VendaButtonActionPerformed
+    }                                           
     
     private void SairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VendaButtonActionPerformed
         LoginFrame login = new LoginFrame();
