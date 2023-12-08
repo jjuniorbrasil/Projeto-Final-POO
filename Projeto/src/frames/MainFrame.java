@@ -3,13 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package frames;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  *
  * @author Júnior
  */
 public class MainFrame extends javax.swing.JFrame {
-
+	VendaFrame painelVenda;
     /**
      * Creates new form MainFrame
      */
@@ -25,7 +27,9 @@ public class MainFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+    	painelVenda= new VendaFrame();
+    	getContentPane().add(painelVenda);
+    	painelVenda.setVisible(true);
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
@@ -49,6 +53,12 @@ public class MainFrame extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VendaButtonActionPerformed(evt);
             }
+        });
+        
+        SairButton.addActionListener(new java.awt.event.ActionListener() {
+        	public void actionPerformed(java.awt.event.ActionEvent evt) {
+        		SairButtonActionPerformed(evt);
+        	}
         });
 
         NovoUserButton.setText("Novo Usuário");
@@ -145,9 +155,15 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void VendaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VendaButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_VendaButtonActionPerformed
 
+    }//GEN-LAST:event_VendaButtonActionPerformed
+    
+    private void SairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VendaButtonActionPerformed
+        LoginFrame login = new LoginFrame();
+        login.setVisible(true);
+        this.dispose();
+   }//GEN-LAST:event_VendaButtonActionPerformed
+    
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton1ActionPerformed
