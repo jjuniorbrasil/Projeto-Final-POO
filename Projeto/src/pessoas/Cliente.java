@@ -82,7 +82,8 @@ public class Cliente extends Pessoa {
 
 	@Override
 	public String toString() {
-		return "Cliente "+idcliente+ "[Nome= "+super.getNome()+"CPF=" +super.getCpf() + ", RG=" + RG + ", país=" + país + ", dataNascimento=" + dataNascimento
+		return "Cliente "+idcliente+ "[Nome= "+super.getNome()+"CPF=" +super.getCpf() + ", RG=" + RG + ", país=" + país + 
+				", \nData de nascimento=" + dataNascimento.getDate()+"/"+dataNascimento.getMonth()+"/"+dataNascimento.getYear()
 				+ "\n, sexo=" + sexo + ", telefone=" + telefone + ", email=" + email + "]\n";
 	}
     

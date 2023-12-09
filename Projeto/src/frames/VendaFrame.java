@@ -87,7 +87,6 @@ public class VendaFrame extends javax.swing.JPanel {
         });
         telefoneField = new javax.swing.JFormattedTextField();
         listaPassagem = new LinkedList();
-        
         VendaPanel.setBackground(new java.awt.Color(51, 51, 51));
         VendaPanel.setToolTipText("");
         VendaPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -462,15 +461,15 @@ public class VendaFrame extends javax.swing.JPanel {
         
         Date data= new Date();
         data.setDate((int) diaComboBox.getSelectedIndex());
-        data.setMonth(mesComboBox.getSelectedIndex()-1);
-        data.setYear((int) anoComboBox.getSelectedIndex()-1);
+        data.setMonth(mesComboBox.getSelectedIndex());
+        data.setYear(Integer.parseInt((String) anoComboBox.getSelectedItem()));
         c.setDataNascimento(data);
         
         Passagem p = new Passagem();
         p.setCliente(c);
         p.setDestino((String) destinoComboBox.getSelectedItem());
-        p.setQuantidade((int) qtdComboBox.getSelectedItem());
-        p.setValor(Double.parseDouble(valorField.getText()));
+        p.setQuantidade(qtdComboBox.getSelectedIndex());
+        //p.setValor(Double.parseDouble(valorField.get()));
         String transporte=null;
         
         if(aviaoButton.isSelected())
