@@ -4,14 +4,19 @@
  */
 package frames;
 import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.JPanel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 /**
  *
  * @author Júnior
  */
 public class MainFrame extends javax.swing.JFrame {
-	VendaFrame painelVenda;
     /**
      * Creates new form MainFrame
      */
@@ -27,9 +32,7 @@ public class MainFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-    	painelVenda= new VendaFrame();
-    	getContentPane().add(painelVenda);
-    	painelVenda.setVisible(true);
+    	painelVenda = new VendaFrame();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
@@ -76,66 +79,66 @@ public class MainFrame extends javax.swing.JFrame {
                 jToggleButton1ActionPerformed(evt);
             }
         });
+        
+        panel = new JPanel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(15, Short.MAX_VALUE)
-                        .addComponent(VendaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(NovoUserButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(655, 655, 655))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(SignLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(SairButton, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSeparator2)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGap(38, 38, 38)
-                                    .addComponent(CadastroLabel)
-                                    .addGap(48, 48, 48)))
-                            .addGap(636, 636, 636)))
-                    .addContainerGap()))
+        	jPanel2Layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(jPanel2Layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(jPanel2Layout.createSequentialGroup()
+        					.addComponent(SignLabel)
+        					.addPreferredGap(ComponentPlacement.RELATED, 526, Short.MAX_VALUE)
+        					.addComponent(SairButton, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(jPanel2Layout.createSequentialGroup()
+        					.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
+        						.addComponent(jSeparator2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        						.addGroup(jPanel2Layout.createSequentialGroup()
+        							.addGap(38)
+        							.addComponent(CadastroLabel)))
+        					.addGap(57)
+        					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 638, GroupLayout.PREFERRED_SIZE)))
+        			.addContainerGap())
+        		.addGroup(Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        			.addGroup(jPanel2Layout.createParallelGroup(Alignment.TRAILING)
+        				.addGroup(jPanel2Layout.createSequentialGroup()
+        					.addGap(0, 33, Short.MAX_VALUE)
+        					.addComponent(jToggleButton1, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(jPanel2Layout.createSequentialGroup()
+        					.addContainerGap(33, Short.MAX_VALUE)
+        					.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING, false)
+        						.addComponent(NovoUserButton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        						.addComponent(VendaButton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))))
+        			.addGap(655))
         );
         jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(VendaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NovoUserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(480, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 569, Short.MAX_VALUE)
-                            .addComponent(SairButton))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(CadastroLabel)
-                            .addGap(71, 71, 71)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 4, Short.MAX_VALUE)
-                            .addGap(485, 485, 485)
-                            .addComponent(SignLabel)))
-                    .addContainerGap()))
+        	jPanel2Layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(jPanel2Layout.createSequentialGroup()
+        			.addGap(35)
+        			.addComponent(VendaButton, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(NovoUserButton, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addComponent(jToggleButton1, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(485, Short.MAX_VALUE))
+        		.addGroup(jPanel2Layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(jPanel2Layout.createParallelGroup(Alignment.TRAILING)
+        				.addGroup(jPanel2Layout.createSequentialGroup()
+        					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+        					.addGap(18)
+        					.addComponent(SairButton))
+        				.addGroup(jPanel2Layout.createSequentialGroup()
+        					.addComponent(CadastroLabel)
+        					.addGap(71)
+        					.addComponent(jSeparator2, GroupLayout.DEFAULT_SIZE, 8, Short.MAX_VALUE)
+        					.addGap(485)
+        					.addComponent(SignLabel)))
+        			.addContainerGap())
         );
+        jPanel2.setLayout(jPanel2Layout);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,10 +155,12 @@ public class MainFrame extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
+        panel.add(painelVenda);
+        panel.setVisible(false);
     }// </editor-fold>//GEN-END:initComponents
 
     private void VendaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VendaButtonActionPerformed
-
+    	   panel.setVisible(true);
     }//GEN-LAST:event_VendaButtonActionPerformed
     
     private void SairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VendaButtonActionPerformed
@@ -214,5 +219,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JToggleButton jToggleButton1;
-    // End of variables declaration//GEN-END:variables
+    private VendaFrame painelVenda;
+    private JPanel panel;
 }
