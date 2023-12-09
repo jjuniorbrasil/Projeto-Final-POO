@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JButton;
 
 /**
  *
@@ -81,12 +82,28 @@ public class MainFrame extends javax.swing.JFrame {
         });
         
         panel = new JPanel();
+        
+        JButton clientesButton = new JButton("Cadastros");
+        clientesButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		painelVenda.getTelaCadastrados().setVisible(true); 
+        		painelVenda.getTelaCadastrados().mostraClientes();
+        		
+        	}
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2Layout.setHorizontalGroup(
-        	jPanel2Layout.createParallelGroup(Alignment.LEADING)
+        	jPanel2Layout.createParallelGroup(Alignment.TRAILING)
         		.addGroup(jPanel2Layout.createSequentialGroup()
         			.addContainerGap()
+        			.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING, false)
+        				.addComponent(clientesButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        				.addComponent(jToggleButton1, GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+        				.addGroup(Alignment.TRAILING, jPanel2Layout.createParallelGroup(Alignment.LEADING, false)
+        					.addComponent(NovoUserButton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        					.addComponent(VendaButton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)))
+        			.addPreferredGap(ComponentPlacement.RELATED)
         			.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING)
         				.addGroup(jPanel2Layout.createSequentialGroup()
         					.addComponent(SignLabel)
@@ -101,17 +118,6 @@ public class MainFrame extends javax.swing.JFrame {
         					.addGap(57)
         					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 638, GroupLayout.PREFERRED_SIZE)))
         			.addContainerGap())
-        		.addGroup(Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-        			.addGroup(jPanel2Layout.createParallelGroup(Alignment.TRAILING)
-        				.addGroup(jPanel2Layout.createSequentialGroup()
-        					.addGap(0, 33, Short.MAX_VALUE)
-        					.addComponent(jToggleButton1, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE))
-        				.addGroup(jPanel2Layout.createSequentialGroup()
-        					.addContainerGap(33, Short.MAX_VALUE)
-        					.addGroup(jPanel2Layout.createParallelGroup(Alignment.LEADING, false)
-        						.addComponent(NovoUserButton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        						.addComponent(VendaButton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))))
-        			.addGap(655))
         );
         jPanel2Layout.setVerticalGroup(
         	jPanel2Layout.createParallelGroup(Alignment.LEADING)
@@ -122,7 +128,9 @@ public class MainFrame extends javax.swing.JFrame {
         			.addComponent(NovoUserButton, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
         			.addPreferredGap(ComponentPlacement.UNRELATED)
         			.addComponent(jToggleButton1, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-        			.addContainerGap(485, Short.MAX_VALUE))
+        			.addGap(18)
+        			.addComponent(clientesButton)
+        			.addGap(444))
         		.addGroup(jPanel2Layout.createSequentialGroup()
         			.addContainerGap()
         			.addGroup(jPanel2Layout.createParallelGroup(Alignment.TRAILING)

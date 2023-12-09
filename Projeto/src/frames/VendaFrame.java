@@ -4,7 +4,9 @@
  */
 package frames;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 
+import passagem.Passagem;
 import pessoas.Cliente;
 
 import java.awt.event.ActionListener;
@@ -33,7 +35,7 @@ public class VendaFrame extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+    	telaCadastrados= new ClienteFrame();
         VendaPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -56,7 +58,7 @@ public class VendaFrame extends javax.swing.JPanel {
         sexoGroup.add(sexoBox2);
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        emailBox = new javax.swing.JTextField();
+        emailField = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -84,7 +86,8 @@ public class VendaFrame extends javax.swing.JPanel {
         	}
         });
         telefoneField = new javax.swing.JFormattedTextField();
-
+        listaPassagem = new LinkedList();
+        
         VendaPanel.setBackground(new java.awt.Color(51, 51, 51));
         VendaPanel.setToolTipText("");
         VendaPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -255,7 +258,7 @@ public class VendaFrame extends javax.swing.JPanel {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jLabel10)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(emailBox, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(0, 0, Short.MAX_VALUE))
                                 .addGroup(VendaPanelLayout.createSequentialGroup()
                                     .addGroup(VendaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -359,7 +362,7 @@ public class VendaFrame extends javax.swing.JPanel {
                                 .addGroup(VendaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel10)
-                                    .addComponent(emailBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(telefoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(VendaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -413,6 +416,14 @@ public class VendaFrame extends javax.swing.JPanel {
 
    
 
+	public ClienteFrame getTelaCadastrados() {
+		return telaCadastrados;
+	}
+
+	public void setTelaCadastrados(ClienteFrame telaCadastrados) {
+		this.telaCadastrados = telaCadastrados;
+	}
+
 	private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
@@ -438,22 +449,54 @@ public class VendaFrame extends javax.swing.JPanel {
     }//GEN-LAST:event_jFormattedTextField1ActionPerformed
     
     private void CadastrarButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
-        Cliente c= new Cliente(nomeField.getText()+" "+sobrenomeField.getText(),CPFField.getText());
-        c.setEmail(emailBox.getText());
+        Cliente c= new Cliente(CPFField.getText(),nomeField.getText()+" "+sobrenomeField.getText());
+        c.setEmail(emailField.getText());
         c.setPaís((String) paisBox.getSelectedItem());
         c.setRG(RGField.getText());
         c.setTelefone(telefoneField.getText());
+        
         if(sexoBox1.isSelected())
         	c.setSexo("Masculino");
         if(sexoBox2.isSelected())
         	c.setSexo("Feminino");
+        
         Date data= new Date();
         data.setDate((int) diaComboBox.getSelectedIndex());
         data.setMonth(mesComboBox.getSelectedIndex()-1);
         data.setYear((int) anoComboBox.getSelectedIndex()-1);
         c.setDataNascimento(data);
-        System.out.println(c.getDataNascimento());
-        listaCliente.add(c);     
+        
+        Passagem p = new Passagem();
+        p.setCliente(c);
+        p.setDestino((String) destinoComboBox.getSelectedItem());
+        p.setQuantidade((int) qtdComboBox.getSelectedItem());
+        p.setValor(Double.parseDouble(valorField.getText()));
+        String transporte=null;
+        
+        if(aviaoButton.isSelected())
+        	transporte="Avião";
+        if(onibusButton.isSelected())
+        	transporte="Ônibus";
+        p.setTransporte(transporte);
+        
+        telaCadastrados.getListaCliente().add(c);
+        listaPassagem.add(p);
+        
+        int confirmacao=JOptionPane.showConfirmDialog(null,"Os dados usados para o cadastros são esses?");
+        if(confirmacao==0) {
+        	JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso!","Gui Swing",JOptionPane.PLAIN_MESSAGE);
+        	nomeField.setText("");
+        	sobrenomeField.setText("");
+        	emailField.setText("");
+        	diaComboBox.setSelectedIndex(0);
+        	mesComboBox.setSelectedIndex(0);
+        	anoComboBox.setSelectedIndex(0);
+        	telefoneField.setText("");
+        	RGField.setText("");
+        	CPFField.setText("");
+        	
+        }
+        nomeField.requestFocus();
     }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
 
@@ -497,11 +540,12 @@ public class VendaFrame extends javax.swing.JPanel {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField nomeField;
     private javax.swing.JTextField sobrenomeField;
-    private javax.swing.JTextField emailBox;
+    private javax.swing.JTextField emailField;
     private javax.swing.JToggleButton cadastrarButton;
     private final ButtonGroup sexoGroup = new ButtonGroup();
     private final ButtonGroup TransporteGroup = new ButtonGroup();
-    private LinkedList<Cliente> listaCliente=new LinkedList();
+    private ClienteFrame telaCadastrados;
+    private LinkedList<Passagem> listaPassagem;
     // End of variables declaration//GEN-END:variables
     
 }

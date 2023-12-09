@@ -2,19 +2,15 @@ package pessoas;
 
 import java.util.Date;
 
-import passagem.Passagem;
-
 public class Cliente extends Pessoa {
     private static int qtdcontas = 1;
     private int idcliente;
-    private String CPF;
     private String RG;
     private String país;
     private Date dataNascimento;
     private String sexo;
     private String telefone;
     private String email;
-    private Passagem passagem;
     
     public int getIdcliente() {
 		return idcliente;
@@ -24,13 +20,6 @@ public class Cliente extends Pessoa {
 		this.idcliente = idcliente;
 	}
 
-	public String getCPF() {
-		return CPF;
-	}
-
-	public void setCPF(String cPF) {
-		CPF = cPF;
-	}
 
 	public String getRG() {
 		return RG;
@@ -90,4 +79,12 @@ public class Cliente extends Pessoa {
     public int id() {
         return this.idcliente;
     }
+
+	@Override
+	public String toString() {
+		return "Cliente "+idcliente+ "[Nome= "+super.getNome()+"CPF=" +super.getCpf() + ", RG=" + RG + ", país=" + país + ", dataNascimento=" + dataNascimento
+				+ "\n, sexo=" + sexo + ", telefone=" + telefone + ", email=" + email + "]\n";
+	}
+    
+    
 }
