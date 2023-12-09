@@ -156,7 +156,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="SignLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="@R&amp;C Tech. 2023"/>
+            <Property name="text" type="java.lang.String" value="@Redlines Tech. 2023"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JToggleButton" name="SairButton">
