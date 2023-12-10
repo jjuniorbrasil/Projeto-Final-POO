@@ -1,0 +1,6 @@
+
+10-12-2023-193513
+ ID: 2 | Tipo: Avião | Cliente: 123.123.123-12 | Rota: São Luís-Maceió | Quantidade: 1 | VALOR(R$): 123.0
+EMBARCA ÀS:  AM | CHEGA ÀS:  PM
+
+-----------------------------------

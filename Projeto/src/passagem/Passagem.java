@@ -11,6 +11,8 @@ public class Passagem {
 	private String destino;
 	private double valor;
 	private Cliente cliente;
+        String embarque;
+        String desembarque;
 	
 	public Passagem() {
             this.passid = ++qtdpass;
@@ -26,6 +28,23 @@ public class Passagem {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+        
+        public void setEmbarque(String embarque) {
+		this.embarque = embarque;
+	}
+        
+        public void setDesembarque(String desembarque) {
+		this.desembarque = desembarque;
+	}
+        
+        public String getEmbarque() {
+		return this.embarque;
+	}
+        
+        public String getDesembarque() {
+		return this.desembarque;
+	}
+        
 	public int getQuantidade() {
 		return quantidade;
 	}
