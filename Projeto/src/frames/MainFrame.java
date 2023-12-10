@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import exceptions.CampoVazio;
 import exceptions.DataInvalida;
+import exceptions.DestinoInvalido;
 import exceptions.EmailInvalido;
 import exceptions.QuantidadeInvalida;
 import exceptions.SexoInvalido;
@@ -726,7 +727,8 @@ public class MainFrame extends javax.swing.JFrame {
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         try {
         	if(nomeField.getText().isEmpty()==true || sobrenomeField.getText().isEmpty()==true
-        	   ||CPFField.getText().equalsIgnoreCase("   .   .   -  ")==true || RGField.getText().equalsIgnoreCase("  .   .   - ")==true || telefoneField.getText().equalsIgnoreCase("(  )     -    ")) {
+        	   ||CPFField.getText().equalsIgnoreCase("   .   .   -  ")==true || RGField.getText().equalsIgnoreCase("  .   .   - ")==true 
+        	   || telefoneField.getText().equalsIgnoreCase("(  )     -    ") || valorField.getText().isEmpty()==true) {
         		String campo=null;
         		if(nomeField.getText().isEmpty()==true)
         			campo="nome";
@@ -738,6 +740,8 @@ public class MainFrame extends javax.swing.JFrame {
         			campo="RG";
         		if(telefoneField.getText().equalsIgnoreCase("(  )     -    "))
         			campo="telefone";
+        		if(valorField.getText().isEmpty()==true)
+        			campo="valor";
         		throw new CampoVazio(campo);
         	}
         
@@ -779,6 +783,8 @@ public class MainFrame extends javax.swing.JFrame {
                   
             Passagem p = new Passagem();
             p.setCliente(c);
+            if(destinoComboBox.getSelectedIndex()==0)
+            	throw new DestinoInvalido();
             p.setDestino((String) destinoComboBox.getSelectedItem());
             
             if(qtdComboBox.getSelectedIndex()==0)
@@ -800,7 +806,8 @@ public class MainFrame extends javax.swing.JFrame {
             	throw new TransporteInvalido();
 
             p.setTransporte(transporte);
-
+            
+            
             telaCadastrados.getListaCliente().add(c);
             listaPassagem.add(p);
             jTextArea1.setText(jTextArea1.getText()+ " ID: "  + p.getPassId() +   " | Cliente: "  + c.getCpf() +   " | Rota: "  + p.getOrigem() + "-" + p.getDestino() +   " | Quantidade: "  + p.getQuantidade() +   " | VALOR(R$): "   + p.getValor() + "\n");
@@ -833,6 +840,8 @@ public class MainFrame extends javax.swing.JFrame {
         	JOptionPane.showMessageDialog(null,v.toString(),"Gui Swing",JOptionPane.PLAIN_MESSAGE);
         }catch(TransporteInvalido t) {
         	JOptionPane.showMessageDialog(null,t.toString(),"Gui Swing",JOptionPane.PLAIN_MESSAGE);
+        }catch(DestinoInvalido Di) {
+        	JOptionPane.showMessageDialog(null,Di.toString(),"Gui Swing",JOptionPane.PLAIN_MESSAGE);
         }
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
