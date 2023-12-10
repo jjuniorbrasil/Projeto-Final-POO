@@ -6,6 +6,13 @@ package frames;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
+
+import exceptions.DataInvalida;
+import exceptions.EmailInvalido;
+import exceptions.QuantidadeInvalida;
+import exceptions.SexoInvalido;
+import exceptions.TransporteInvalido;
+import exceptions.ValorInvalido;
 import passagem.Passagem;
 import pessoas.Cliente;
 import java.util.Date;
@@ -716,55 +723,80 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ClientesButtonActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        Cliente c= new Cliente(CPFField.getText(),nomeField.getText()+" "+sobrenomeField.getText());
-        c.setEmail(emailField.getText());
-        c.setPaís((String) paisBox.getSelectedItem());
-        c.setRG(RGField.getText());
-        c.setTelefone(telefoneField.getText());
+        try {
+        	Cliente c= new Cliente(CPFField.getText(),nomeField.getText()+" "+sobrenomeField.getText());
+        	
+            if(emailField.getText().contains("@")==false || emailField.getText().contains(".")==false)
+            	throw new EmailInvalido(emailField.getText());
+            
+            c.setEmail(emailField.getText());
+            c.setPaís((String) paisBox.getSelectedItem());
+            c.setRG(RGField.getText());
+            c.setTelefone(telefoneField.getText());
+            
+            if(sexoBox1.isSelected())
+            c.setSexo("Masculino");
+            if(sexoBox2.isSelected())
+            c.setSexo("Feminino");
+            
+            if(sexoBox1.isSelected()==false && sexoBox2.isSelected()==false)
+            	throw new SexoInvalido();
+            
+            Date data= new Date();
+            
+            if(diaComboBox.getSelectedIndex()==0 || mesComboBox.getSelectedIndex()==0 || anoComboBox.getSelectedIndex()==0)
+            	throw new DataInvalida(diaComboBox.getSelectedIndex(), mesComboBox.getSelectedIndex(),anoComboBox.getSelectedIndex());
+            
+            data.setDate((int) diaComboBox.getSelectedIndex());
+            data.setMonth(mesComboBox.getSelectedIndex());
+            data.setYear(Integer.parseInt((String) anoComboBox.getSelectedItem()));
+            c.setDataNascimento(data);
 
-        if(sexoBox1.isSelected())
-        c.setSexo("Masculino");
-        if(sexoBox2.isSelected())
-        c.setSexo("Feminino");
+            Passagem p = new Passagem();
+            p.setCliente(c);
+            p.setDestino((String) destinoComboBox.getSelectedItem());
+            
+            if(qtdComboBox.getSelectedIndex()==0)
+            	throw new QuantidadeInvalida();
+            
+            p.setQuantidade(qtdComboBox.getSelectedIndex());
+            p.setValor(Double.parseDouble(valorField.getText()));
+            
+            if(p.getValor()<=0)
+            	throw new ValorInvalido(p.getValor());
+            
+            String transporte=null;
 
-        Date data= new Date();
-        data.setDate((int) diaComboBox.getSelectedIndex());
-        data.setMonth(mesComboBox.getSelectedIndex());
-        data.setYear(Integer.parseInt((String) anoComboBox.getSelectedItem()));
-        c.setDataNascimento(data);
+            if(aviaoButton.isSelected())
+            transporte="Avião";
+            if(onibusButton.isSelected())
+            transporte="Ônibus";
+            if(aviaoButton.isSelected()==false && onibusButton.isSelected()==false)
+            	throw new TransporteInvalido();
 
-        Passagem p = new Passagem();
-        p.setCliente(c);
-        p.setDestino((String) destinoComboBox.getSelectedItem());
-        p.setQuantidade(qtdComboBox.getSelectedIndex());
-        p.setValor(Double.parseDouble(valorField.getText()));
-        String transporte=null;
+            p.setTransporte(transporte);
 
-        if(aviaoButton.isSelected())
-        transporte="Avião";
-        if(onibusButton.isSelected())
-        transporte="Ônibus";
+            telaCadastrados.getListaCliente().add(c);
+            listaPassagem.add(p);
+            jTextArea1.setText(jTextArea1.getText()+ " ID: "  + p.getPassId() +   " | Cliente: "  + c.getCpf() +   " | Rota: "  + p.getOrigem() + "-" + p.getDestino() +   " | Quantidade: "  + p.getQuantidade() +   " | VALOR(R$): "   + p.getValor() + "\n");
 
-        p.setTransporte(transporte);
-
-        telaCadastrados.getListaCliente().add(c);
-        listaPassagem.add(p);
-        jTextArea1.setText(jTextArea1.getText()+ " ID: "  + p.getPassId() +   " | Cliente: "  + c.getCpf() +   " | Rota: "  + p.getOrigem() + "-" + p.getDestino() +   " | Quantidade: "  + p.getQuantidade() +   " | VALOR(R$): "   + p.getValor() + "\n");
-
-        int confirmacao=JOptionPane.showConfirmDialog(null,"Os dados usados para o cadastros são esses?");
-        if(confirmacao==0) {
-            JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso!","Gui Swing",JOptionPane.PLAIN_MESSAGE);
-            nomeField.setText("");
-            sobrenomeField.setText("");
-            emailField.setText("");
-            diaComboBox.setSelectedIndex(0);
-            mesComboBox.setSelectedIndex(0);
-            anoComboBox.setSelectedIndex(0);
-            telefoneField.setText("");
-            RGField.setText("");
-            CPFField.setText("");
+            int confirmacao=JOptionPane.showConfirmDialog(null,"Os dados usados para o cadastros são esses?");
+            if(confirmacao==0) {
+                JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso!","Gui Swing",JOptionPane.PLAIN_MESSAGE);
+                nomeField.setText("");
+                sobrenomeField.setText("");
+                emailField.setText("");
+                diaComboBox.setSelectedIndex(0);
+                mesComboBox.setSelectedIndex(0);
+                anoComboBox.setSelectedIndex(0);
+                telefoneField.setText("");
+                RGField.setText("");
+                CPFField.setText("");
+            }
+            nomeField.requestFocus();
+        }catch(Exception e) {
+        	
         }
-        nomeField.requestFocus();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void CPFFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPFFieldActionPerformed
