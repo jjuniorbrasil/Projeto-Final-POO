@@ -18,13 +18,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ClienteFrame extends JFrame {
-
-	private JPanel contentPane;
+    
+    private JPanel contentPane;
     private LinkedList<Cliente> listaCliente;
     JTextArea textArea;
     private JButton sairButton;
-	public LinkedList<Cliente> getListaCliente() {
-		return listaCliente;
+    public LinkedList<Cliente> getListaCliente() {
+    return listaCliente;
+    
 	}
 
 	/**

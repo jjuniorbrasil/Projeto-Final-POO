@@ -36,6 +36,32 @@ public class MainFrame extends javax.swing.JFrame {
         DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss");
         String sessaoformatada = sessao.format(formatador);
         arquivo = sessaoformatada;
+        destinoComboBox.addItem("Rio Branco");
+        destinoComboBox.addItem("Maceió");
+        destinoComboBox.addItem("Macapá");
+        destinoComboBox.addItem("Manaus");
+        destinoComboBox.addItem("Salvador");
+        destinoComboBox.addItem("Fortaleza");
+        destinoComboBox.addItem("Brasília");
+        destinoComboBox.addItem("Vitória");
+        destinoComboBox.addItem("Goiânia");
+        destinoComboBox.addItem("Cuiabá");
+        destinoComboBox.addItem("Campo Grande");
+        destinoComboBox.addItem("Belo Horizonte");
+        destinoComboBox.addItem("Belém");
+        destinoComboBox.addItem("João Pessoa");
+        destinoComboBox.addItem("Curitiba");
+        destinoComboBox.addItem("Recife");
+        destinoComboBox.addItem("Teresina");
+        destinoComboBox.addItem("Rio de Janeiro");
+        destinoComboBox.addItem("Natal");
+        destinoComboBox.addItem("Porto Alegre");
+        destinoComboBox.addItem("Porto Velho");
+        destinoComboBox.addItem("Boa Vista");
+        destinoComboBox.addItem("Florianópolis");
+        destinoComboBox.addItem("São Paulo");
+        destinoComboBox.addItem("Aracaju");
+        destinoComboBox.addItem("Palmas");
     }
     
     public ClienteFrame getTelaCadastrados() {
@@ -103,7 +129,7 @@ public class MainFrame extends javax.swing.JFrame {
         jToggleButton2 = new javax.swing.JToggleButton();
         telefoneField = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        MainPanel = new javax.swing.JPanel();
         CadastroLabel = new javax.swing.JLabel();
         ClientesButton = new javax.swing.JButton();
         GerarRelatorioButton = new javax.swing.JButton();
@@ -539,9 +565,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         getContentPane().add(VendaPanel);
 
-        jPanel2.setFocusable(false);
-        jPanel2.setOpaque(false);
-        jPanel2.setPreferredSize(new java.awt.Dimension(675, 540));
+        MainPanel.setFocusable(false);
+        MainPanel.setOpaque(false);
+        MainPanel.setPreferredSize(new java.awt.Dimension(675, 540));
 
         CadastroLabel.setFont(new java.awt.Font("Ebrima", 1, 12)); // NOI18N
         CadastroLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -624,35 +650,35 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
+        MainPanel.setLayout(MainPanelLayout);
+        MainPanelLayout.setHorizontalGroup(
+            MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MainPanelLayout.createSequentialGroup()
+                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MainPanelLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(MainPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(GerarRelatorioButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(ClientesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(VendaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jSeparator6)
                                 .addComponent(NovoUserButton, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(MainPanelLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(CadastroLabel)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 675, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        MainPanelLayout.setVerticalGroup(
+            MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
                 .addGap(13, 13, 13)
                 .addComponent(CadastroLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -666,19 +692,19 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ClientesButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
                 .addContainerGap(370, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 540, Short.MAX_VALUE))
         );
 
         jLabel16.getAccessibleContext().setAccessibleDescription("");
 
-        getContentPane().add(jPanel2);
+        getContentPane().add(MainPanel);
 
         pack();
         setLocationRelativeTo(null);
@@ -686,7 +712,7 @@ public class MainFrame extends javax.swing.JFrame {
 
    
     private void ClientesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesButtonActionPerformed
-        
+        telaCadastrados.setVisible(true);
     }//GEN-LAST:event_ClientesButtonActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
@@ -724,7 +750,6 @@ public class MainFrame extends javax.swing.JFrame {
         telaCadastrados.getListaCliente().add(c);
         listaPassagem.add(p);
         jTextArea1.setText(jTextArea1.getText()+ " ID: "  + p.getPassId() +   " | Cliente: "  + c.getCpf() +   " | Rota: "  + p.getOrigem() + "-" + p.getDestino() +   " | Quantidade: "  + p.getQuantidade() +   " | VALOR(R$): "   + p.getValor() + "\n");
-
 
         int confirmacao=JOptionPane.showConfirmDialog(null,"Os dados usados para o cadastros são esses?");
         if(confirmacao==0) {
@@ -862,6 +887,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton ClientesButton;
     private javax.swing.JFrame ClientesCadastradosFrame;
     private javax.swing.JButton GerarRelatorioButton;
+    private javax.swing.JPanel MainPanel;
     public javax.swing.JButton NovoUserButton;
     private javax.swing.JFormattedTextField RGField;
     private javax.swing.JButton SairButton;
@@ -894,7 +920,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
