@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 
+import exceptions.CampoVazio;
 import exceptions.DataInvalida;
 import exceptions.EmailInvalido;
 import exceptions.QuantidadeInvalida;
@@ -724,8 +725,23 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         try {
+        	if(nomeField.getText().isEmpty()==true || sobrenomeField.getText().isEmpty()==true
+        	   ||CPFField.getText().isBlank() || RGField.getText().isEmpty()==true || telefoneField.getText().isEmpty()) {
+        		String campo=null;
+        		if(nomeField.getText().isEmpty()==true)
+        			campo="nome";
+        		if(sobrenomeField.getText().isEmpty()==true)
+        			campo="sobrenome";
+        		if(CPFField.getText().isBlank()==true)
+        			campo="CPF";
+        		if(RGField.getText().isEmpty()==true)
+        			campo="RG";
+        		if(telefoneField.getText().isEmpty()==true)
+        			campo="telefone";
+        		throw new CampoVazio(campo);
+        	}
+        
         	Cliente c= new Cliente(CPFField.getText(),nomeField.getText()+" "+sobrenomeField.getText());
-        	
             if(emailField.getText().contains("@")==false || emailField.getText().contains(".")==false)
             	throw new EmailInvalido(emailField.getText());
             
@@ -751,7 +767,16 @@ public class MainFrame extends javax.swing.JFrame {
             data.setMonth(mesComboBox.getSelectedIndex());
             data.setYear(Integer.parseInt((String) anoComboBox.getSelectedItem()));
             c.setDataNascimento(data);
+                
+            Date dataAtual= new Date();
+            SimpleDateFormat formatoAno = new SimpleDateFormat("yyyy");
+	        int anoAtual = Integer.parseInt(formatoAno.format(dataAtual));
 
+        	if(anoAtual-c.getDataNascimento().getYear()<18) {
+        		throw new DataInvalida(diaComboBox.getSelectedIndex(), mesComboBox.getSelectedIndex(),anoComboBox.getSelectedIndex(),true);
+            
+        	}
+                  
             Passagem p = new Passagem();
             p.setCliente(c);
             p.setDestino((String) destinoComboBox.getSelectedItem());
@@ -794,6 +819,8 @@ public class MainFrame extends javax.swing.JFrame {
                 CPFField.setText("");
             }
             nomeField.requestFocus();
+        }catch(CampoVazio c) {
+        	 JOptionPane.showMessageDialog(null,c.toString(),"Gui Swing",JOptionPane.PLAIN_MESSAGE);
         }catch(EmailInvalido e) {
         	 JOptionPane.showMessageDialog(null,e.toString(),"Gui Swing",JOptionPane.PLAIN_MESSAGE);
         }catch(SexoInvalido s) {
