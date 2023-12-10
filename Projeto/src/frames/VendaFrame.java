@@ -410,7 +410,34 @@ public class VendaFrame extends javax.swing.JPanel {
                     .addComponent(VendaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
-        destinoComboBox.addItem("puta que pariu");
+        destinoComboBox.addItem("Rio Branco");
+        destinoComboBox.addItem("Maceió");
+        destinoComboBox.addItem("Macapá");
+        destinoComboBox.addItem("Manaus");
+        destinoComboBox.addItem("Salvador");
+        destinoComboBox.addItem("Fortaleza");
+        destinoComboBox.addItem("Brasília");
+        destinoComboBox.addItem("Vitória");
+        destinoComboBox.addItem("Goiânia");
+        destinoComboBox.addItem("Cuiabá");
+        destinoComboBox.addItem("Campo Grande");
+        destinoComboBox.addItem("Belo Horizonte");
+        destinoComboBox.addItem("Belém");
+        destinoComboBox.addItem("João Pessoa");
+        destinoComboBox.addItem("Curitiba");
+        destinoComboBox.addItem("Recife");
+        destinoComboBox.addItem("Teresina");
+        destinoComboBox.addItem("Rio de Janeiro");
+        destinoComboBox.addItem("Natal");
+        destinoComboBox.addItem("Porto Alegre");
+        destinoComboBox.addItem("Porto Velho");
+        destinoComboBox.addItem("Boa Vista");
+        destinoComboBox.addItem("Florianópolis");
+        destinoComboBox.addItem("São Paulo");
+        destinoComboBox.addItem("Aracaju");
+        destinoComboBox.addItem("Palmas");
+        
+        
     }// </editor-fold>//GEN-END:initComponents
 
    
