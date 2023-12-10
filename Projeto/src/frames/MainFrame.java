@@ -794,8 +794,18 @@ public class MainFrame extends javax.swing.JFrame {
                 CPFField.setText("");
             }
             nomeField.requestFocus();
-        }catch(Exception e) {
-        	
+        }catch(EmailInvalido e) {
+        	 JOptionPane.showMessageDialog(null,e.toString(),"Gui Swing",JOptionPane.PLAIN_MESSAGE);
+        }catch(SexoInvalido s) {
+        	 JOptionPane.showMessageDialog(null,s.toString(),"Gui Swing",JOptionPane.PLAIN_MESSAGE);
+        }catch(DataInvalida d) {
+        	JOptionPane.showMessageDialog(null,d.toString(),"Gui Swing",JOptionPane.PLAIN_MESSAGE);
+        }catch(QuantidadeInvalida q) {
+        	JOptionPane.showMessageDialog(null,q.toString(),"Gui Swing",JOptionPane.PLAIN_MESSAGE);
+        }catch(ValorInvalido v) {
+        	JOptionPane.showMessageDialog(null,v.toString(),"Gui Swing",JOptionPane.PLAIN_MESSAGE);
+        }catch(TransporteInvalido t) {
+        	JOptionPane.showMessageDialog(null,t.toString(),"Gui Swing",JOptionPane.PLAIN_MESSAGE);
         }
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 

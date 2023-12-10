@@ -4,7 +4,7 @@ public class DataInvalida extends Exception {
   int indexdia;
   int indexMes;
   int indexano;
-  String erro;
+  String erro="";
  
  public DataInvalida(int indexdia, int indexMes, int indexano) {
 	super();
@@ -15,15 +15,16 @@ public class DataInvalida extends Exception {
 
 public void mensagemErro() {
 	 if(indexdia==0)
-		 erro+="O dia da data de nascimento não foi selecionado/n";
+		 erro+="O dia da data de nascimento não foi selecionado\n";
 	 if(indexMes==0)
-		 erro+="O mês da data de nascimento não foi selecionado/n";
+		 erro+="O mês da data de nascimento não foi selecionado\n";
 	 if(indexano==0)
-		 erro+="O ano da data de nascimento não foi selecionado/n";
+		 erro+="O ano da data de nascimento não foi selecionado\n";
  }
    
 @Override
 public String toString() {
+	mensagemErro();
 	return erro;
 }
 
