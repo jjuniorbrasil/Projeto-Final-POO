@@ -25,14 +25,17 @@ public class CadastraUsuario {
                 this.username = username;
                 this.password = password;
                 this.admin = false;
-                File user = new File("src/usuarios/Users/" + username + ".txt");
-            try {
+        }
+        
+        public void CadastrarUsuario(){
+        try {
+                File user = new File("src/usuarios/Users/" + this.username + ".txt");
                 user.createNewFile();
-                FileWriter writeuser = new FileWriter("src/usuarios/Users/" + username + ".txt");
-                writeuser.write(username+"\n"+password);
+                FileWriter writeuser = new FileWriter("src/usuarios/Users/" + this.username + ".txt");
+                writeuser.write(this.username+"\n"+this.password);
                 writeuser.close();
             } catch (IOException e) {
                 System.out.println("Impossível cadastrar o usuário.");
             }
-        }
+    }
 }

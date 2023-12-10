@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package frames;
+import java.awt.event.KeyEvent;
 import usuarios.CadastraUsuario;
 import java.util.List;
 import java.util.ArrayList;
@@ -23,10 +24,12 @@ public class LoginFrame extends javax.swing.JFrame {
        initComponents();
     }
     
-    private void acessMain() {
-        MainFrame telaPrincipal= new MainFrame();
+    private void acessMain(boolean admin) {
+        MainFrame telaPrincipal = new MainFrame();
         this.dispose();;
         telaPrincipal.setVisible(true);
+        if (admin == false)
+            telaPrincipal.NovoUserButton.setEnabled(false);
     }
 
     /**
@@ -61,14 +64,28 @@ public class LoginFrame extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
         setType(java.awt.Window.Type.UTILITY);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(23, 23, 23));
 
-        userField.setBackground(new java.awt.Color(102, 102, 102));
-        userField.setForeground(new java.awt.Color(255, 255, 255));
-        userField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51)));
-        userField.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        userField.setBackground(new java.awt.Color(255, 255, 255));
+        userField.setColumns(2);
+        userField.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        userField.setForeground(new java.awt.Color(0, 0, 0));
+        userField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        userField.setBorder(null);
+        userField.setCaretColor(new java.awt.Color(255, 255, 255));
+        userField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         userField.setSelectedTextColor(new java.awt.Color(255, 255, 255));
+        userField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                userFieldKeyPressed(evt);
+            }
+        });
 
         userLabel.setBackground(new java.awt.Color(153, 255, 0));
         userLabel.setFont(new java.awt.Font("Ebrima", 1, 12)); // NOI18N
@@ -80,12 +97,22 @@ public class LoginFrame extends javax.swing.JFrame {
         passLabel.setForeground(new java.awt.Color(255, 255, 255));
         passLabel.setText("Senha:");
 
-        passField.setBackground(new java.awt.Color(102, 102, 102));
-        passField.setForeground(new java.awt.Color(255, 255, 255));
-        passField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51)));
-        passField.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        passField.setBackground(new java.awt.Color(255, 255, 255));
+        passField.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        passField.setForeground(new java.awt.Color(0, 0, 0));
+        passField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        passField.setAlignmentX(0.9F);
+        passField.setBorder(null);
+        passField.setCaretColor(new java.awt.Color(255, 255, 255));
+        passField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        passField.setEchoChar('*');
         passField.setMaximumSize(new java.awt.Dimension(800, 800));
         passField.setSelectedTextColor(new java.awt.Color(255, 255, 255));
+        passField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passFieldKeyPressed(evt);
+            }
+        });
 
         ErrorLabel.setFont(new java.awt.Font("Ebrima", 1, 12)); // NOI18N
         ErrorLabel.setForeground(new java.awt.Color(255, 102, 102));
@@ -98,6 +125,11 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
+            }
+        });
+        jLabel3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jLabel3KeyPressed(evt);
             }
         });
 
@@ -196,9 +228,9 @@ public class LoginFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-          if (userField.getText().equals("admin") && passField.getText().equals("admin")) {
-                    acessMain();
+    private void tryLogin() {
+                  if (userField.getText().equals("admin") && passField.getText().equals("admin")) {
+                    acessMain(true);
                 } else {
                     File login = new File("src/usuarios/Users/"+userField.getText()+".txt");
                         if (login.exists()){
@@ -207,7 +239,7 @@ public class LoginFrame extends javax.swing.JFrame {
                                 myScan.nextLine();
                                 String password = myScan.nextLine();
                                 if (passField.getText().equals(password)){
-                                    acessMain();
+                                    acessMain(false);
                                 }
                             }
                             catch (FileNotFoundException e) {
@@ -216,11 +248,35 @@ public class LoginFrame extends javax.swing.JFrame {
                         }
                     ErrorLabel.setText("Usuário ou senha inválidos.");
                 }
+    }
+    
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        tryLogin();
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         this.dispose();
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel3KeyPressed
+
+    }//GEN-LAST:event_jLabel3KeyPressed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+
+    }//GEN-LAST:event_formKeyPressed
+
+    private void userFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userFieldKeyPressed
+            if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+                tryLogin();
+            }
+    }//GEN-LAST:event_userFieldKeyPressed
+
+    private void passFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passFieldKeyPressed
+            if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+                tryLogin();
+            }
+    }//GEN-LAST:event_passFieldKeyPressed
 
     /**
      * @param args the command line arguments

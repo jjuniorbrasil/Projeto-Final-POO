@@ -3,6 +3,8 @@ package passagem;
 import pessoas.Cliente;
 
 public class Passagem {
+        private static int qtdpass = 0;
+        private int passid;
 	private int quantidade;
 	private String transporte;
 	private String origem="São Luís";
@@ -10,7 +12,14 @@ public class Passagem {
 	private double valor;
 	private Cliente cliente;
 	
-	
+	public Passagem() {
+            this.passid = ++qtdpass;
+        }
+        
+        public int getPassId() {
+            return this.passid;
+        }
+        
 	public Cliente getCliente() {
 		return cliente;
 	}

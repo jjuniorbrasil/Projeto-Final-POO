@@ -84,7 +84,7 @@ public class Cliente extends Pessoa {
 	public String toString() {
 		return "Cliente "+idcliente+ "[Nome= "+super.getNome()+"CPF=" +super.getCpf() + ", RG=" + RG + ", país=" + país + 
 				", \nData de nascimento=" + dataNascimento.getDate()+"/"+dataNascimento.getMonth()+"/"+dataNascimento.getYear()
-				+ "\n, sexo=" + sexo + ", telefone=" + telefone + ", email=" + email + "]\n";
+				+ "\n, sexo=" + sexo + ", telefone=" + telefone + ", email=" + email + "] \n";
 	}
     
     
