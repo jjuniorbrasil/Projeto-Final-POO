@@ -726,17 +726,17 @@ public class MainFrame extends javax.swing.JFrame {
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         try {
         	if(nomeField.getText().isEmpty()==true || sobrenomeField.getText().isEmpty()==true
-        	   ||CPFField.getText().isBlank() || RGField.getText().isEmpty()==true || telefoneField.getText().isEmpty()) {
+        	   ||CPFField.getText().equalsIgnoreCase("   .   .   -  ")==true || RGField.getText().equalsIgnoreCase("  .   .   - ")==true || telefoneField.getText().equalsIgnoreCase("(  )     -    ")) {
         		String campo=null;
         		if(nomeField.getText().isEmpty()==true)
         			campo="nome";
         		if(sobrenomeField.getText().isEmpty()==true)
         			campo="sobrenome";
-        		if(CPFField.getText().isBlank()==true)
+        		if(CPFField.getText().equalsIgnoreCase("   .   .   -  ")==true)
         			campo="CPF";
-        		if(RGField.getText().isEmpty()==true)
+        		if(RGField.getText().equalsIgnoreCase("  .   .   - ")==true)
         			campo="RG";
-        		if(telefoneField.getText().isEmpty()==true)
+        		if(telefoneField.getText().equalsIgnoreCase("(  )     -    "))
         			campo="telefone";
         		throw new CampoVazio(campo);
         	}
